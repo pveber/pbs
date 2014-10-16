@@ -45,6 +45,8 @@ val create :
   ?queue:string ->
   ?stderr_path:string ->
   ?stdout_path:string ->
+  ?working_directory:string ->
+  ?root_directory:string ->
   ?array_indexes:array_index list ->
   ?dependencies:dependency list ->
   ?nodes:int -> ?ppn:int -> Program.t -> t

@@ -88,6 +88,8 @@ let create
   ?queue
   ?stderr_path
   ?stdout_path
+  ?working_directory
+  ?root_directory
   ?(array_indexes: array_index list option)
   ?(dependencies: dependency list option)
   ?(nodes=1) ?(ppn=1) program =
@@ -110,6 +112,8 @@ let create
       [sprintf "#PBS -l %s" resource_list];
       opt stderr_path ~f:(sprintf "#PBS -e %s");
       opt stdout_path ~f:(sprintf "#PBS -o %s");
+      opt working_directory ~f:(sprintf "#PBS -d %s");
+      opt root_directory ~f:(sprintf "#PBS -D %s");
       opt name ~f:(sprintf "#PBS -N %s");
       opt queue ~f:(sprintf "#PBS -q %s");
       opt array_indexes ~f:(fun indexes ->
